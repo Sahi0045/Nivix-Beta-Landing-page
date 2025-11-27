@@ -23,19 +23,13 @@ interface PricingPlan {
 
 const features: PricingFeature[] = [
   { name: "Instant cross-border payments (< 3s)", included: "all" },
-  { name: "Zero transaction fees vs SWIFT", included: "all" },
-  { name: "Fiat-to-Fiat conversion", included: "all" },
-  { name: "Solana + Hyperledger blockchain", included: "all" },
-  { name: "Trade finance integration", included: "all" },
+  { name: "Zero transaction fees", included: "all" },
   { name: "150+ countries supported", included: "all" },
-  { name: "API access for developers", included: "all" },
+  { name: "Fiat-to-Fiat conversion", included: "all" },
   { name: "Real-time transaction tracking", included: "all" },
   { name: "Advanced fraud detection", included: "all" },
-  { name: "Multi-currency support", included: "all" },
+  { name: "API access for developers", included: "all" },
   { name: "Priority beta support", included: "all" },
-  { name: "Dedicated onboarding", included: "all" },
-  { name: "Early adopter benefits", included: "all" },
-  { name: "Future feature access", included: "all" },
 ]
 
 const plans: PricingPlan[] = [
@@ -110,53 +104,77 @@ export function PricingSection() {
           </div>
         </div>
 
-        {/* Features Table */}
-        <div className="border border-border rounded-2xl overflow-hidden bg-card">
-          <div className="overflow-x-auto">
-            <div className="min-w-[768px]">
-              {/* Table Header */}
-              <div className="flex items-center p-6 bg-secondary border-b border-border">
-                <div className="flex-1">
-                  <h3 className="font-figtree text-xl font-medium">Features</h3>
+        {/* Features Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {features.map((feature, index) => (
+            <div
+              key={feature.name}
+              className="p-6 rounded-2xl border border-border bg-card hover:border-[#156d95]/50 transition-all hover:shadow-lg"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-[#156d95] flex items-center justify-center flex-shrink-0 mt-1">
+                  <CheckIcon className="w-4 h-4 text-white" />
                 </div>
-                <div className="flex items-center gap-8">
-                  {plans.map((plan) => (
-                    <div key={plan.level} className="w-24 text-center font-figtree text-lg font-medium">
-                      {plan.name}
-                    </div>
-                  ))}
+                <div>
+                  <h4 className="font-figtree text-lg font-medium mb-2">{feature.name}</h4>
+                  <p className="font-figtree text-sm text-muted-foreground">
+                    Included in all beta plans with full access and priority support.
+                  </p>
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
 
-              {/* Feature Rows */}
-              {features.map((feature, index) => (
-                <div
-                  key={feature.name}
-                  className={cn(
-                    "flex items-center p-6 transition-colors",
-                    index % 2 === 0 ? "bg-background" : "bg-secondary/30",
-                    feature.included === selectedPlan && "bg-[#156d95]/5",
-                  )}
-                >
-                  <div className="flex-1">
-                    <span className="font-figtree text-lg">{feature.name}</span>
+        {/* Competitive Comparison */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="font-figtree text-[32px] font-normal leading-tight mb-4">Why Choose Nivix Over Traditional Options</h3>
+            <p className="font-figtree text-lg text-muted-foreground max-w-2xl mx-auto">
+              Compare our revolutionary cross-border payment solution with existing market players.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { name: "Nivix", time: "< 3 seconds", fees: "0.5-1.3%", highlight: true },
+              { name: "Wise", time: "1-2 days", fees: "2-3%", highlight: false },
+              { name: "PayPal", time: "2-4 days", fees: "2.5-4%", highlight: false },
+              { name: "Lemfi", time: "1-3 days", fees: "1-3%", highlight: false },
+              { name: "Banks/SWIFT", time: "3-5 days", fees: "3-8%", highlight: false },
+            ].map((provider) => (
+              <div
+                key={provider.name}
+                className={cn(
+                  "p-6 rounded-2xl border text-center transition-all",
+                  provider.highlight
+                    ? "border-[#156d95] bg-[#156d95]/5 shadow-lg"
+                    : "border-border bg-card hover:border-[#156d95]/50"
+                )}
+              >
+                <h4 className="font-figtree text-lg font-medium mb-4">{provider.name}</h4>
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-figtree text-sm text-muted-foreground mb-1">Transfer Time</p>
+                    <p className={cn(
+                      "font-figtree text-xl font-bold",
+                      provider.highlight ? "text-[#156d95]" : "text-foreground"
+                    )}>
+                      {provider.time}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-8">
-                    {plans.map((plan) => (
-                      <div key={plan.level} className="w-24 flex justify-center">
-                        {shouldShowCheck(feature.included, plan.level) ? (
-                          <div className="w-6 h-6 rounded-full bg-[#156d95] flex items-center justify-center">
-                            <CheckIcon className="w-4 h-4 text-white" />
-                          </div>
-                        ) : (
-                          <span className="text-muted-foreground">-</span>
-                        )}
-                      </div>
-                    ))}
+                  <div>
+                    <p className="font-figtree text-sm text-muted-foreground mb-1">Fees</p>
+                    <p className={cn(
+                      "font-figtree text-xl font-bold",
+                      provider.highlight ? "text-[#156d95]" : "text-foreground"
+                    )}>
+                      {provider.fees}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
