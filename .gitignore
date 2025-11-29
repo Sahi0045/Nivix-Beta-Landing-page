@@ -89,3 +89,6 @@ jspm_packages/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Waitlist data (contains user emails and personal information)
+data/

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { CheckIcon } from "@radix-ui/react-icons"
 import { cn } from "@/lib/utils"
+import { WaitlistDialog } from "@/components/WaitlistDialog"
 
 type PlanLevel = "starter" | "pro" | "enterprise"
 
@@ -52,6 +53,7 @@ function shouldShowCheck(included: PricingFeature["included"], level: PlanLevel)
 export function PricingSection() {
   const [isYearly, setIsYearly] = React.useState(false)
   const [selectedPlan, setSelectedPlan] = React.useState<PlanLevel>("pro")
+  const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = React.useState(false)
 
   return (
     <section className="py-24 bg-background">
@@ -93,14 +95,15 @@ export function PricingSection() {
                 <span className="font-figtree text-lg text-muted-foreground">for beta participants</span>
               </div>
             </div>
-            <div
+            <button
+              onClick={() => setIsWaitlistDialogOpen(true)}
               className={cn(
                 "w-full py-3 px-6 rounded-full font-figtree text-lg transition-all text-center",
                 selectedPlan === "starter" ? "bg-[#156d95] text-white" : "bg-secondary text-foreground",
               )}
             >
               Join Beta
-            </div>
+            </button>
           </div>
         </div>
 
@@ -180,11 +183,18 @@ export function PricingSection() {
 
         {/* CTA Button */}
         <div className="mt-12 text-center">
-          <button className="bg-[#156d95] text-white px-[18px] py-[15px] rounded-full font-figtree text-lg hover:rounded-2xl transition-all">
+          <button
+            onClick={() => setIsWaitlistDialogOpen(true)}
+            className="bg-[#156d95] text-white px-[18px] py-[15px] rounded-full font-figtree text-lg hover:rounded-2xl transition-all"
+          >
             Join India-UK Beta Program
           </button>
         </div>
       </div>
+      <WaitlistDialog
+        open={isWaitlistDialogOpen}
+        onOpenChange={setIsWaitlistDialogOpen}
+      />
     </section>
   )
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { WaitlistDialog } from "@/components/WaitlistDialog"
 type StatItem = {
   value: string
   description: string
@@ -63,6 +64,7 @@ export const BankingScaleHero = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [dataPoints] = useState<DataPoint[]>(generateDataPoints())
   const [typingComplete, setTypingComplete] = useState(false)
+  const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false)
   useEffect(() => {
     setIsVisible(true)
     const timer = setTimeout(() => setTypingComplete(true), 1000)
@@ -149,7 +151,10 @@ export const BankingScaleHero = () => {
               Eliminating SWIFT & legacy rails with instant cross-border payments and trade finance. Join our India-UK beta launching Q1 2026.
             </p>
 
-            <button className="relative inline-flex justify-center items-center leading-4 text-center cursor-pointer whitespace-nowrap outline-none font-medium h-9 text-[#232730] bg-white/50 backdrop-blur-sm shadow-[0_1px_1px_0_rgba(255,255,255,0),0_0_0_1px_rgba(87,90,100,0.12)] transition-all duration-200 ease-in-out rounded-lg px-4 mt-5 text-sm group hover:shadow-[0_1px_2px_0_rgba(0,0,0,0.05),0_0_0_1px_rgba(87,90,100,0.18)]">
+            <button
+              onClick={() => setIsWaitlistDialogOpen(true)}
+              className="relative inline-flex justify-center items-center leading-4 text-center cursor-pointer whitespace-nowrap outline-none font-medium h-9 text-[#232730] bg-white/50 backdrop-blur-sm shadow-[0_1px_1px_0_rgba(255,255,255,0),0_0_0_1px_rgba(87,90,100,0.12)] transition-all duration-200 ease-in-out rounded-lg px-4 mt-5 text-sm group hover:shadow-[0_1px_2px_0_rgba(0,0,0,0.05),0_0_0_1px_rgba(87,90,100,0.18)]"
+            >
               <span className="relative z-10 flex items-center gap-1">
                 Join India-UK Beta
                 <ArrowRight className="w-4 h-4 -mr-1 transition-transform duration-150 group-hover:translate-x-1" />
@@ -265,6 +270,10 @@ export const BankingScaleHero = () => {
           </div>
         </div>
       </div>
+      <WaitlistDialog
+        open={isWaitlistDialogOpen}
+        onOpenChange={setIsWaitlistDialogOpen}
+      />
     </div>
   )
 }

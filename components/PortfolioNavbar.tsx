@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { WaitlistDialog } from "@/components/WaitlistDialog"
 const navigationLinks = [
   {
     name: "Features",
@@ -26,6 +27,7 @@ const navigationLinks = [
 export const PortfolioNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -96,7 +98,7 @@ export const PortfolioNavbar = () => {
 
           <div className="hidden md:block">
             <button
-              onClick={() => handleLinkClick("#contact")}
+              onClick={() => setIsWaitlistDialogOpen(true)}
               className="bg-[#156d95] text-white px-[18px] rounded-full text-base font-semibold hover:bg-[#156d95]/90 transition-all duration-200 hover:rounded-2xl shadow-sm hover:shadow-md whitespace-nowrap leading-4 py-[15px]"
               style={{
                 fontFamily: "Plus Jakarta Sans, sans-serif",
@@ -162,19 +164,26 @@ export const PortfolioNavbar = () => {
               ))}
               <div className="pt-4 border-t border-border">
                 <button
-                  onClick={() => handleLinkClick("#contact")}
+                  onClick={() => {
+                    setIsWaitlistDialogOpen(true)
+                    closeMobileMenu()
+                  }}
                   className="w-full bg-[#156d95] text-white px-[18px] py-[15px] rounded-full text-base font-semibold hover:bg-[#156d95]/90 transition-all duration-200"
                   style={{
                     fontFamily: "Plus Jakarta Sans, sans-serif",
                   }}
                 >
-                  <span>Start Free Trial</span>
+                  <span>Start Join Waitlist</span>
                 </button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <WaitlistDialog
+        open={isWaitlistDialogOpen}
+        onOpenChange={setIsWaitlistDialogOpen}
+      />
     </nav>
   )
 }
