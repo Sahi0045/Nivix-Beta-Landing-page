@@ -1,35 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { promises as fs } from "fs"
-import path from "path"
-
-const dataDir = path.join(process.cwd(), "data")
-const waitlistFile = path.join(dataDir, "waitlist.json")
-
-// Ensure data directory exists
-async function ensureDataDir() {
-  try {
-    await fs.access(dataDir)
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true })
-  }
-}
-
-// Read waitlist data
-async function readWaitlist() {
-  await ensureDataDir()
-  try {
-    const fileContents = await fs.readFile(waitlistFile, "utf8")
-    return JSON.parse(fileContents)
-  } catch {
-    return { entries: [] }
-  }
-}
-
-// Write waitlist data
-async function writeWaitlist(data: any) {
-  await ensureDataDir()
-  await fs.writeFile(waitlistFile, JSON.stringify(data, null, 2), "utf8")
-}
+import nodemailer from "nodemailer"
+import { supabaseServerClient } from "@/lib/supabaseServer"
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,59 +24,105 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Read existing waitlist
-    const waitlistData = await readWaitlist()
+    // Optionally store in Supabase if configured
+    let supabaseSaved = false
+    try {
+      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+        const supabase = supabaseServerClient()
 
-    // Check if email already exists
-    const existingEntry = waitlistData.entries.find(
-      (entry: any) => entry.email.toLowerCase() === email.toLowerCase(),
-    )
+        // Check if email already exists
+        const { data: existing, error: existingError } = await supabase
+          .from("waitlist_signups")
+          .select("id")
+          .eq("email", email.toLowerCase())
+          .maybeSingle()
 
-    if (existingEntry) {
+        if (existingError) {
+          console.error("[waitlist] Error checking existing Supabase entry:", existingError)
+        } else if (!existing) {
+          const { error: insertError } = await supabase.from("waitlist_signups").insert({
+            email: email.toLowerCase(),
+            name: name.trim(),
+            status: "pending",
+          })
+
+          if (insertError) {
+            console.error("[waitlist] Error inserting Supabase entry:", insertError)
+          } else {
+            supabaseSaved = true
+          }
+        } else {
+          supabaseSaved = true
+        }
+      } else {
+        console.warn("[waitlist] Supabase env vars not set; skipping DB storage.")
+      }
+    } catch (supabaseError) {
+      console.error("[waitlist] Unexpected Supabase error:", supabaseError)
+    }
+
+    // Ensure SMTP is configured
+    if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error("[waitlist] SMTP environment variables are not fully configured.")
       return NextResponse.json(
-        { error: "This email is already on the waitlist" },
-        { status: 409 },
+        { error: "Email service is not configured on the server." },
+        { status: 500 },
       )
     }
 
-    // Add new entry
-    const newEntry = {
-      id: Date.now().toString(),
-      email: email.toLowerCase(),
-      name: name.trim(),
-      createdAt: new Date().toISOString(),
-      status: "pending", // You can use this to track if you've replied to them
-    }
+    const notifyEmail = process.env.WAITLIST_NOTIFY_EMAIL || "nivix394@gmail.com"
 
-    waitlistData.entries.push(newEntry)
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
 
-    // Save to file
-    await writeWaitlist(waitlistData)
+    // Internal notification to founder / team
+    await transporter.sendMail({
+      from: `"NivixPe Waitlist" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      to: notifyEmail,
+      subject: "New NivixPe waitlist signup",
+      text: `New waitlist signup:
+
+Name: ${name}
+Email: ${email}
+Saved to Supabase: ${supabaseSaved ? "yes" : "no (check env / table config)"}`,
+    })
+
+    // Friendly confirmation email to the person who joined the waitlist
+    await transporter.sendMail({
+      from: `"NivixPe" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      to: email,
+      subject: "Thank you for joining the NivixPe waitlist",
+      text: `Dear ${name},
+
+Thank you for joining the NivixPe beta waitlist.
+
+You’re now on our early access list for the upcoming cross-border payments testing phase. 
+As we progress with our India–UK beta and obtain the necessary regulatory clearances for production, 
+we'll reach out with updates, timelines, and next steps.
+
+Please do not share any sensitive banking information over email. Our team will only contact you from official NivixPe channels.
+
+Warm regards,
+Team NivixPe
+contact@nivixpe.com`,
+    })
 
     return NextResponse.json(
       {
         success: true,
-        message: "Successfully added to waitlist",
-        entry: newEntry,
+        message: "Successfully sent waitlist details",
       },
       { status: 201 },
     )
   } catch (error) {
     console.error("Error processing waitlist request:", error)
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    )
-  }
-}
-
-// Optional: GET endpoint to view waitlist entries (you might want to protect this)
-export async function GET() {
-  try {
-    const waitlistData = await readWaitlist()
-    return NextResponse.json(waitlistData, { status: 200 })
-  } catch (error) {
-    console.error("Error reading waitlist:", error)
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

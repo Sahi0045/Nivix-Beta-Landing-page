@@ -70,14 +70,14 @@ const defaultSections: FooterSection[] = [
 
 export const Footer = ({
   companyName = "nivixpe",
-  tagline = "The Intelligence Layer for Modern Communication",
+      tagline = "Blockchain-based cross-border payment service provider for faster, compliant global transfers",
   sections = defaultSections,
-  socialLinks = {
-    twitter: "https://twitter.com",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
-    email: "hello@auralink.com",
-  },
+      socialLinks = {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+      github: "https://github.com",
+      email: "contact@nivixpe.com",
+    },
   copyrightText,
 }: FooterProps) => {
   const currentYear = new Date().getFullYear()
@@ -189,26 +189,36 @@ export const Footer = ({
           transition={{ duration: 0.5, delay: 0.6 }}
           className="pt-8 border-t border-[#e5e5e5]"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-[#666666]" style={{ fontFamily: "Figtree" }}>
-              {copyright}
-            </p>
-            <div className="flex items-center gap-6">
-              <a
-                href="#status"
-                className="text-sm text-[#666666] hover:text-[#202020] transition-colors duration-150"
-                style={{ fontFamily: "Figtree" }}
-              >
-                Status
-              </a>
-              <a
-                href="#sitemap"
-                className="text-sm text-[#666666] hover:text-[#202020] transition-colors duration-150"
-                style={{ fontFamily: "Figtree" }}
-              >
-                Sitemap
-              </a>
+          <div className="flex flex-col gap-4 md:gap-3">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <p className="text-sm text-[#666666]" style={{ fontFamily: "Figtree" }}>
+                {copyright}
+              </p>
+              <div className="flex items-center gap-6">
+                <a
+                  href="#status"
+                  className="text-sm text-[#666666] hover:text-[#202020] transition-colors duration-150"
+                  style={{ fontFamily: "Figtree" }}
+                >
+                  Status
+                </a>
+                <a
+                  href="#sitemap"
+                  className="text-sm text-[#666666] hover:text-[#202020] transition-colors duration-150"
+                  style={{ fontFamily: "Figtree" }}
+                >
+                  Sitemap
+                </a>
+              </div>
             </div>
+            <p className="text-xs leading-relaxed text-[#8a8a8a] max-w-4xl" style={{ fontFamily: "Figtree" }}>
+              NivixPe Private Limited is an Indian DPIIT-recognized startup, incubated at Bennett Hatchery, operating
+              as a blockchain-based cross-border payment service provider. The current product is in a closed testing
+              phase with invited users only, using test tokens (no real customer funds and no commercial revenue).
+              Independent Chartered Accountant and external legal counsel have confirmed compliance for this testing
+              phase with applicable Indian laws and regulations, including PMLA, FEMA, RBI guidelines, Income Tax,
+              DPDPA, GST, and Companies Act, as outlined in the Legal Opinion and CA Confirmation.
+            </p>
           </div>
         </motion.div>
       </div>
