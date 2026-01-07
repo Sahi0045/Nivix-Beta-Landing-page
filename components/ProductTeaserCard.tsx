@@ -25,7 +25,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
     dailyVolume = "1,430,992,688",
     dailyVolumeLabel = "INSTANT CROSS-BORDER PAYMENTS",
     headline = "Instant Global Flows for India's Ambitions",
-    subheadline = "Nivixpe connects every payment, trade, and settlement into a unified blockchain layer — delivering real-time insights, instant verification, and global alignment across your favorite tools.",
+    subheadline = "Nivixpe connects every payment, trade, and settlement into a unified blockchain layer — delivering real-time insights, instant verification, and global alignment across your favorite Countries.",
     description = "Trusted by fast-growing teams and enterprises, Nivixpe powers smarter commerce across 1,000+ organizations — with enterprise-grade security, multilingual support, and instant settlement.",
     videoSrc = "https://cdn.sanity.io/files/1t8iva7t/production/a2cbbed7c998cf93e7ecb6dae75bab42b13139c2.mp4",
     posterSrc = "/images/design-mode/9ad78a5534a46e77bafe116ce1c38172c60dc21a-1069x1068.png",
