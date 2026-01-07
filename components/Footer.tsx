@@ -29,33 +29,24 @@ const defaultSections: FooterSection[] = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "Integrations", href: "#integrations" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "API Docs", href: "#api" },
-      { label: "Changelog", href: "#changelog" },
+      { label: "Features", href: "/features" },
+      { label: "Integrations", href: "/integrations" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "API Docs", href: "/api-docs" },
+      { label: "Changelog", href: "/changelog" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Careers", href: "#careers" },
-      { label: "Blog", href: "#blog" },
-      { label: "Press Kit", href: "#press" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Press Kit", href: "/press-kit" },
+      { label: "Contact", href: "/contact" },
     ],
   },
-  {
-    title: "Resources",
-    links: [
-      { label: "Documentation", href: "#docs" },
-      { label: "Help Center", href: "#help" },
-      { label: "Community", href: "#community" },
-      { label: "Case Studies", href: "#case-studies" },
-      { label: "Webinars", href: "#webinars" },
-    ],
-  },
+  
   {
     title: "Legal",
     links: [
@@ -203,7 +194,7 @@ export const Footer = ({
                   Status
                 </a>
                 <a
-                  href="#sitemap"
+                  href="/sitemap"
                   className="text-sm text-[#666666] hover:text-[#202020] transition-colors duration-150"
                   style={{ fontFamily: "Figtree" }}
                 >
@@ -218,6 +209,12 @@ export const Footer = ({
               Independent Chartered Accountant and external legal counsel have confirmed compliance for this testing
               phase with applicable Indian laws and regulations, including PMLA, FEMA, RBI guidelines, Income Tax,
               DPDPA, GST, and Companies Act, as outlined in the Legal Opinion and CA Confirmation.
+            </p>
+            <p className="text-xs leading-relaxed text-[#8a8a8a] max-w-4xl mt-4" style={{ fontFamily: "Figtree" }}>
+              <strong>🔒 Compliance Notice:</strong> Nivixpe operates with a compliance-first approach. Product availability may vary by region and regulatory status.
+            </p>
+            <p className="text-xs leading-relaxed text-[#8a8a8a] max-w-4xl mt-2" style={{ fontFamily: "Figtree" }}>
+              <strong>📍 Address:</strong> Miryalaguda S.v gardens, Telangana, India
             </p>
           </div>
         </motion.div>
