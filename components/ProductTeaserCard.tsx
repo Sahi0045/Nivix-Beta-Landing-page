@@ -1,6 +1,9 @@
 "use client"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
+import { WaitlistDialog } from "@/components/WaitlistDialog"
 type ProductTeaserCardProps = {
   dailyVolume?: string
   dailyVolumeLabel?: string
@@ -17,6 +20,7 @@ type ProductTeaserCardProps = {
 
 // @component: ProductTeaserCard
 export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
+  const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false)
   const {
     dailyVolume = "1,430,992,688",
     dailyVolumeLabel = "INSTANT CROSS-BORDER PAYMENTS",
@@ -28,7 +32,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
     primaryButtonText = "Join Waitlist",
     primaryButtonHref = "",
     secondaryButtonText = "Learn More",
-    secondaryButtonHref = "",
+    secondaryButtonHref = "/learn-more",
   } = props
 
   // @return
@@ -122,25 +126,23 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
 
             <ul className="flex gap-1.5 flex-wrap mt-10">
               <li>
-                <a
-                  href={primaryButtonHref}
-                  onClick={(e) => e.preventDefault()}
+                <button
+                  onClick={() => setIsWaitlistDialogOpen(true)}
                   className="block cursor-pointer text-white bg-[#0988f0] rounded-full px-[18px] py-[15px] text-base leading-4 whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)] hover:rounded-2xl"
                   style={{
                     background: "#156d95",
                   }}
                 >
                   {primaryButtonText}
-                </a>
+                </button>
               </li>
               <li>
-                <a
+                <Link
                   href={secondaryButtonHref}
-                  onClick={(e) => e.preventDefault()}
                   className="block cursor-pointer text-[#202020] border border-[#202020] rounded-full px-[18px] py-[15px] text-base leading-4 whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)] hover:rounded-2xl"
                 >
                   {secondaryButtonText}
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>
@@ -188,6 +190,10 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
           </motion.div>
         </div>
       </div>
+      <WaitlistDialog
+        open={isWaitlistDialogOpen}
+        onOpenChange={setIsWaitlistDialogOpen}
+      />
     </section>
   )
 }

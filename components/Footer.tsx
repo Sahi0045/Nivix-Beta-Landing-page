@@ -59,11 +59,11 @@ const defaultSections: FooterSection[] = [
   {
     title: "Legal",
     links: [
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of Service", href: "#terms" },
-      { label: "Security", href: "#security" },
-      { label: "Compliance", href: "#compliance" },
-      { label: "Cookie Policy", href: "#cookies" },
+      { label: "Privacy Policy", href: "/legal/privacy-policy" },
+      { label: "Terms of Service", href: "/legal/terms-of-service" },
+      { label: "Security", href: "/legal/security" },
+      { label: "Compliance", href: "/legal/compliance" },
+      { label: "Cookie Policy", href: "/legal/cookie-policy" },
     ],
   },
 ]

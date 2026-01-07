@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { WaitlistDialog } from "@/components/WaitlistDialog"
 const navigationLinks = [
   {
@@ -10,12 +12,12 @@ const navigationLinks = [
     href: "#features",
   },
   {
-    name: "Pricing",
-    href: "#pricing",
+    name: "Team",
+    href: "/team",
   },
   {
-    name: "Solutions",
-    href: "#solutions",
+    name: "Roadmap",
+    href: "/roadmap",
   },
   {
     name: "Resources",
@@ -28,6 +30,9 @@ export const PortfolioNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -43,11 +48,31 @@ export const PortfolioNavbar = () => {
   }
   const handleLinkClick = (href: string) => {
     closeMobileMenu()
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      })
+    // Check if it's an anchor link (starts with #)
+    if (href.startsWith("#")) {
+      // If we're on a different page, navigate to home first
+      if (pathname !== "/") {
+        router.push(`/${href}`)
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href)
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        }, 100)
+      } else {
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+          })
+        }
+      }
+    } else {
+      // It's a route, use Next.js navigation
+      router.push(href)
     }
   }
 
@@ -59,8 +84,8 @@ export const PortfolioNavbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <button
-              onClick={() => handleLinkClick("#home")}
+            <Link
+              href="/"
               className="text-2xl font-bold text-foreground hover:text-primary transition-colors duration-200"
               style={{
                 fontFamily: "Plus Jakarta Sans, sans-serif",
@@ -74,7 +99,7 @@ export const PortfolioNavbar = () => {
               >
                 nivixpe
               </span>
-            </button>
+            </Link>
           </div>
 
           <div className="hidden md:block">
