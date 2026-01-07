@@ -138,7 +138,7 @@ export const BankingScaleHero = () => {
                   fontSize: "40px",
                 }}
               >
-                — Fiat-to-Fiat cross-border payments powered by Solana + Hyperledger.
+                — Fiat-to-Fiat cross-border payments powered by Blockchain Technology.
               </span>
             </h2>
 
