@@ -37,9 +37,9 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
 
   // @return
   return (
-    <section className="w-full px-8 pt-32 pb-16">
+    <section className="w-full px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
           <motion.div
             initial={{
               opacity: 0,
@@ -51,7 +51,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
               duration: 0.8,
               ease: [0.645, 0.045, 0.355, 1],
             }}
-            className="col-span-12 lg:col-span-6 bg-[#e9e9e9] rounded-[40px] p-12 lg:p-16 flex flex-col justify-end aspect-square overflow-hidden"
+            className="col-span-12 lg:col-span-6 bg-[#e9e9e9] rounded-3xl sm:rounded-[40px] p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-end aspect-square sm:aspect-auto lg:aspect-square overflow-hidden"
           >
             <a
               href={primaryButtonHref}
@@ -95,7 +95,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
             </a>
 
             <h1
-              className="text-[56px] leading-[60px] tracking-tight text-[#202020] max-w-[520px] mb-6"
+              className="text-4xl sm:text-5xl md:text-[56px] leading-[1.1] sm:leading-[1.1] md:leading-[60px] tracking-tight text-[#202020] max-w-[520px] mb-4 sm:mb-6"
               style={{
                 fontWeight: "500",
                 fontFamily: "var(--font-figtree), Figtree",
@@ -105,7 +105,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
             </h1>
 
             <p
-              className="text-lg leading-7 text-[#404040] max-w-[520px] mb-6"
+              className="text-base sm:text-lg leading-6 sm:leading-7 text-[#404040] max-w-[520px] mb-6 sm:mb-8"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
               }}
@@ -124,27 +124,20 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
               </p>
             </div>
 
-            <ul className="flex gap-1.5 flex-wrap mt-10">
-              <li>
-                <button
-                  onClick={() => setIsWaitlistDialogOpen(true)}
-                  className="block cursor-pointer text-white bg-[#0988f0] rounded-full px-[18px] py-[15px] text-base leading-4 whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)] hover:rounded-2xl"
-                  style={{
-                    background: "#156d95",
-                  }}
-                >
-                  {primaryButtonText}
-                </button>
-              </li>
-              <li>
-                <Link
-                  href={secondaryButtonHref}
-                  className="block cursor-pointer text-[#202020] border border-[#202020] rounded-full px-[18px] py-[15px] text-base leading-4 whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)] hover:rounded-2xl"
-                >
-                  {secondaryButtonText}
-                </Link>
-              </li>
-            </ul>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
+              <button
+                onClick={() => setIsWaitlistDialogOpen(true)}
+                className="w-full sm:w-auto cursor-pointer text-white bg-[#156d95] hover:bg-[#115d80] rounded-full px-6 py-3 sm:px-5 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base leading-none sm:leading-4 whitespace-nowrap transition-all duration-200 ease-in-out transform hover:scale-[1.03] active:scale-[0.98]"
+              >
+                {primaryButtonText}
+              </button>
+              <Link
+                href={secondaryButtonHref}
+                className="w-full sm:w-auto cursor-pointer text-center text-[#202020] border border-[#202020] hover:bg-gray-100 rounded-full px-6 py-3 sm:px-5 sm:py-3 md:px-6 md:py-4 text-sm sm:text-base leading-none sm:leading-4 whitespace-nowrap transition-all duration-200 ease-in-out transform hover:scale-[1.03] active:scale-[0.98]"
+              >
+                {secondaryButtonText}
+              </Link>
+            </div>
           </motion.div>
 
           <motion.div
@@ -159,7 +152,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
               ease: [0.645, 0.045, 0.355, 1],
               delay: 0.2,
             }}
-            className="col-span-12 lg:col-span-6 bg-white rounded-[40px] flex justify-center items-center aspect-square overflow-hidden"
+            className="col-span-12 lg:col-span-6 bg-white rounded-3xl sm:rounded-[40px] flex justify-center items-center aspect-square overflow-hidden mt-6 sm:mt-0"
             style={{
               backgroundImage:
                 "url(https://storage.googleapis.com/storage.magicpath.ai/user/282171029206482944/assets/882ef3dd-3459-4fd8-a939-52ceada51d5c.png)",
@@ -167,6 +160,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               opacity: "1",
+              minHeight: "320px"
             }}
           >
             <video

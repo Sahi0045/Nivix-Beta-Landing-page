@@ -60,6 +60,15 @@ const teamMembers: TeamMember[] = [
       "Brand operations support",
     ],
   },
+  {
+    name: "Siddharth",
+    role: "research and Analytics Lead",
+    focusAreas: ["Research", "Analytics"],
+    responsibilities: [
+      "Research",
+      "Analytics",
+    ],
+  },
 ]
 
 const advisor: TeamMember = {
