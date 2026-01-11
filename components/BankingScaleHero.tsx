@@ -74,8 +74,8 @@ export const BankingScaleHero = () => {
   // @return
   return (
     <div className="w-full overflow-hidden bg-white">
-      <div className="mx-auto max-w-7xl px-8 py-24 pt-16">
-        <div className="grid grid-cols-12 gap-5 gap-y-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-24 pt-8 sm:pt-12 md:pt-16">
+        <div className="grid grid-cols-12 gap-4 sm:gap-5 gap-y-8 sm:gap-y-16">
           <div className="col-span-12 md:col-span-6 relative z-10">
             <div
               className="relative h-6 inline-flex items-center font-mono uppercase text-xs text-[#167E6C] mb-12 px-2"
@@ -123,7 +123,7 @@ export const BankingScaleHero = () => {
             </div>
 
             <h2
-              className="text-[40px] font-normal leading-tight tracking-tight text-[#111A4A] mb-6"
+              className="text-2xl sm:text-3xl md:text-[40px] font-normal leading-tight tracking-tight text-[#111A4A] mb-4 sm:mb-6"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
                 fontSize: "40px",
@@ -143,7 +143,7 @@ export const BankingScaleHero = () => {
             </h2>
 
             <p
-              className="text-lg leading-6 text-[#111A4A] opacity-60 mt-0 mb-6"
+              className="text-base sm:text-lg leading-5 sm:leading-6 text-[#111A4A] opacity-60 mt-0 mb-4 sm:mb-6"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
               }}
@@ -162,7 +162,7 @@ export const BankingScaleHero = () => {
             </button>
           </div>
 
-          <div className="col-span-12 md:col-span-6">
+          <div className="hidden md:block col-span-12 md:col-span-6">
             <div className="relative w-full h-[416px] -ml-[200px]">
               <div className="absolute top-0 left-[302px] w-[680px] h-[416px] pointer-events-none">
                 <div className="relative w-full h-full">
@@ -176,9 +176,9 @@ export const BankingScaleHero = () => {
                       animate={
                         isVisible
                           ? {
-                              opacity: [0, 1, 1],
-                              height: [0, point.height, point.height],
-                            }
+                            opacity: [0, 1, 1],
+                            height: [0, point.height, point.height],
+                          }
                           : {}
                       }
                       transition={{
@@ -204,8 +204,8 @@ export const BankingScaleHero = () => {
                         animate={
                           isVisible
                             ? {
-                                opacity: [0, 1],
-                              }
+                              opacity: [0, 1],
+                            }
                             : {}
                         }
                         transition={{
@@ -238,10 +238,10 @@ export const BankingScaleHero = () => {
                       animate={
                         isVisible
                           ? {
-                              opacity: [0, 1, 1],
-                              y: [20, 0, 0],
-                              filter: ["blur(4px)", "blur(0px)", "blur(0px)"],
-                            }
+                            opacity: [0, 1, 1],
+                            y: [20, 0, 0],
+                            filter: ["blur(4px)", "blur(0px)", "blur(0px)"],
+                          }
                           : {}
                       }
                       transition={{

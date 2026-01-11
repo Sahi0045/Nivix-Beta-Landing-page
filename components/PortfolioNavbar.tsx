@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { WaitlistDialog } from "@/components/WaitlistDialog"
@@ -32,7 +32,19 @@ export const PortfolioNavbar = () => {
   const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
-  
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -80,6 +92,7 @@ export const PortfolioNavbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}
+      style={{ paddingTop: "max(0px, env(safe-area-inset-top))" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
@@ -143,8 +156,9 @@ export const PortfolioNavbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-foreground hover:text-primary p-2 rounded-md transition-colors duration-200"
+              className="text-foreground hover:text-primary p-3 rounded-md transition-colors duration-200 active:scale-95"
               aria-label="Toggle mobile menu"
+              style={{ minWidth: "44px", minHeight: "44px" }}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -171,17 +185,18 @@ export const PortfolioNavbar = () => {
               duration: 0.3,
               ease: "easeInOut",
             }}
-            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border"
+            className="md:hidden bg-background/98 backdrop-blur-lg border-t border-border shadow-lg"
           >
-            <div className="px-4 py-3 space-y-1">
+            <div className="px-4 py-4 space-y-2" style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
               {navigationLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleLinkClick(link.href)}
-                  className="block w-full text-left text-foreground hover:text-primary py-3 px-4 text-base font-medium transition-colors duration-200 rounded-lg hover:bg-accent/50"
+                  className="block w-full text-left text-foreground hover:text-primary py-3 px-4 text-base font-medium transition-all duration-200 rounded-lg hover:bg-accent/50 active:scale-98"
                   style={{
                     fontFamily: "Figtree, sans-serif",
                     fontWeight: "500",
+                    minHeight: "44px",
                   }}
                 >
                   <span className="flex items-center">
@@ -196,9 +211,10 @@ export const PortfolioNavbar = () => {
                     setIsWaitlistDialogOpen(true)
                     closeMobileMenu()
                   }}
-                  className="w-full bg-[#156d95] text-white py-3 px-4 rounded-full text-base font-semibold hover:bg-[#156d95]/90 transition-all duration-200 flex items-center justify-center space-x-2"
+                  className="w-full bg-[#156d95] text-white py-3 px-4 rounded-full text-base font-semibold hover:bg-[#156d95]/90 transition-all duration-200 flex items-center justify-center space-x-2 active:scale-98"
                   style={{
                     fontFamily: "Plus Jakarta Sans, sans-serif",
+                    minHeight: "48px",
                   }}
                 >
                   <span>Start Join Waitlist</span>

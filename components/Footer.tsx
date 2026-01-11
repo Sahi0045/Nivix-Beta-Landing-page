@@ -46,7 +46,7 @@ const defaultSections: FooterSection[] = [
       { label: "Contact", href: "/contact" },
     ],
   },
-  
+
   {
     title: "Legal",
     links: [
@@ -61,23 +61,23 @@ const defaultSections: FooterSection[] = [
 
 export const Footer = ({
   companyName = "nivixpe",
-      tagline = "Blockchain-based cross-border payment service provider for faster, compliant global transfers",
+  tagline = "Blockchain-based cross-border payment service provider for faster, compliant global transfers",
   sections = defaultSections,
-      socialLinks = {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "contact@nivixpe.com",
-    },
+  socialLinks = {
+    twitter: "https://twitter.com",
+    linkedin: "https://linkedin.com",
+    github: "https://github.com",
+    email: "contact@nivixpe.com",
+  },
   copyrightText,
 }: FooterProps) => {
   const currentYear = new Date().getFullYear()
   const copyright = copyrightText || `© ${currentYear} ${companyName}. All rights reserved.`
   return (
-    <footer className="w-full bg-[#fafafa] border-t border-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-8 py-16">
+    <footer className="w-full bg-[#fafafa] border-t border-[#e5e5e5]" style={{ paddingBottom: "max(0px, env(safe-area-inset-bottom))" }}>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Brand Column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -99,12 +99,13 @@ export const Footer = ({
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3 sm:gap-4 mt-6">
               {socialLinks.twitter && (
                 <a
                   href={socialLinks.twitter}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-colors duration-150"
+                  className="w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-all duration-150 active:scale-95"
                   aria-label="Twitter"
+                  style={{ minWidth: "44px", minHeight: "44px" }}
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
@@ -112,8 +113,9 @@ export const Footer = ({
               {socialLinks.linkedin && (
                 <a
                   href={socialLinks.linkedin}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-colors duration-150"
+                  className="w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-all duration-150 active:scale-95"
                   aria-label="LinkedIn"
+                  style={{ minWidth: "44px", minHeight: "44px" }}
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -121,8 +123,9 @@ export const Footer = ({
               {socialLinks.github && (
                 <a
                   href={socialLinks.github}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-colors duration-150"
+                  className="w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-all duration-150 active:scale-95"
                   aria-label="GitHub"
+                  style={{ minWidth: "44px", minHeight: "44px" }}
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -130,8 +133,9 @@ export const Footer = ({
               {socialLinks.email && (
                 <a
                   href={`mailto:${socialLinks.email}`}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-colors duration-150"
+                  className="w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white border border-[#e5e5e5] text-[#666666] hover:text-[#202020] hover:border-[#202020] transition-all duration-150 active:scale-95"
                   aria-label="Email"
+                  style={{ minWidth: "44px", minHeight: "44px" }}
                 >
                   <Mail className="w-4 h-4" />
                 </a>

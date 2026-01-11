@@ -70,7 +70,7 @@ export const IntegrationCarousel = ({
         if (Math.abs(position) >= rowRef.current.scrollWidth / 2) {
           position = 0
         }
-        rowRef.current.style.transform = `translateX(${position}px)` 
+        rowRef.current.style.transform = `translateX(${position}px)`
       }
       animationId = requestAnimationFrame(animateRow)
     }
@@ -82,25 +82,25 @@ export const IntegrationCarousel = ({
 
   // @return
   return (
-    <div className="w-full py-24 bg-white">
-      <div className="max-w-[680px] mx-auto">
+    <div className="w-full py-12 sm:py-16 md:py-24 bg-white">
+      <div className="max-w-[680px] mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-center mb-20"
+          className="flex flex-col items-center mb-10 sm:mb-14 md:mb-20"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#156d95]/10 to-[#52aee3]/10 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#156d95]/10 to-[#52aee3]/10 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#156d95] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-[#156d95]"></span>
             </span>
             <span className="font-figtree text-sm font-medium text-[#156d95]">Trusted Partners</span>
           </div>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-3 sm:gap-4">
             <h2
-              className="text-[48px] leading-tight font-normal text-[#222222] text-center tracking-tight mb-0 bg-gradient-to-r from-[#156d95] via-[#52aee3] to-[#9ed2fc] bg-clip-text text-transparent"
+              className="text-2xl sm:text-3xl md:text-[48px] leading-tight font-normal text-[#222222] text-center tracking-tight mb-0 bg-gradient-to-r from-[#156d95] via-[#52aee3] to-[#9ed2fc] bg-clip-text text-transparent"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
                 fontWeight: "400",
@@ -110,7 +110,7 @@ export const IntegrationCarousel = ({
               {title}
             </h2>
             <p
-              className="text-xl leading-7 text-[#666666] text-center max-w-[700px] mt-4"
+              className="text-base sm:text-lg md:text-xl leading-6 sm:leading-7 text-[#666666] text-center max-w-[700px] mt-2 sm:mt-4"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
               }}
@@ -127,7 +127,7 @@ export const IntegrationCarousel = ({
           >
             <a
               href={buttonHref}
-              className="inline-block px-5 py-2.5 rounded-full bg-white text-[#222222] text-[15px] font-medium leading-6 text-center whitespace-nowrap transition-all duration-75 ease-out w-[182px] cursor-pointer hover:shadow-lg"
+              className="inline-block px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-[#222222] text-sm sm:text-[15px] font-medium leading-5 sm:leading-6 text-center whitespace-nowrap transition-all duration-75 ease-out w-auto sm:w-[182px] cursor-pointer hover:shadow-lg"
               style={{
                 boxShadow:
                   "0 -1px 0 0 rgb(181, 181, 181) inset, -1px 0 0 0 rgb(227, 227, 227) inset, 1px 0 0 0 rgb(227, 227, 227) inset, 0 1px 0 0 rgb(227, 227, 227) inset",

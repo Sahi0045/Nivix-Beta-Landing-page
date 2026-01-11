@@ -56,25 +56,25 @@ export function PricingSection() {
   const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = React.useState(false)
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12 sm:py-16 md:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-figtree text-[40px] font-normal leading-tight mb-4">Join India-UK Beta</h2>
-          <p className="font-figtree text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="font-figtree text-2xl sm:text-3xl md:text-[40px] font-normal leading-tight mb-3 sm:mb-4">Join India-UK Beta</h2>
+          <p className="font-figtree text-base sm:text-lg leading-6 sm:leading-7 text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
             Be among the first to experience instant cross-border payments. Zero fees, unlimited transactions, and priority support for beta participants.
           </p>
         </div>
 
         {/* Beta Launch Timeline */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-secondary rounded-full px-6 py-3">
-            <span className="font-figtree text-lg text-[#156d95] font-medium"> Launching Q1 2026</span>
+        <div className="flex justify-center mb-8 sm:mb-10 md:mb-12">
+          <div className="bg-secondary rounded-full px-4 sm:px-6 py-2 sm:py-3">
+            <span className="font-figtree text-base sm:text-lg text-[#156d95] font-medium"> Launching Q1 2026</span>
           </div>
         </div>
 
         {/* Beta Card - Centered */}
-        <div className="max-w-2xl mx-auto mb-12">
+        <div className="max-w-2xl mx-auto mb-10 sm:mb-12">
           <div
             className={cn(
               "relative p-8 rounded-2xl text-left transition-all border-2",
@@ -83,24 +83,25 @@ export function PricingSection() {
                 : "border-border hover:border-[#156d95]/50",
             )}
           >
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#156d95] text-white px-4 py-1 rounded-full text-sm font-figtree">
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#156d95] text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-figtree">
               Most Popular
             </span>
             <div className="mb-6 text-center">
-              <h3 className="font-figtree text-2xl font-medium mb-2">{plans[0].name}</h3>
-              <div className="flex items-center justify-center gap-1">
-                <span className="font-figtree text-4xl font-medium text-[#156d95]">
+              <h3 className="font-figtree text-xl sm:text-2xl font-medium mb-2">{plans[0].name}</h3>
+              <div className="flex items-center justify-center gap-1 flex-wrap">
+                <span className="font-figtree text-3xl sm:text-4xl font-medium text-[#156d95]">
                   0 $
                 </span>
-                <span className="font-figtree text-lg text-muted-foreground">for beta participants</span>
+                <span className="font-figtree text-sm sm:text-base md:text-lg text-muted-foreground">for beta participants</span>
               </div>
             </div>
             <button
               onClick={() => setIsWaitlistDialogOpen(true)}
               className={cn(
-                "w-full py-3 px-6 rounded-full font-figtree text-lg transition-all text-center",
+                "w-full py-3 px-6 rounded-full font-figtree text-base sm:text-lg transition-all text-center active:scale-98",
                 selectedPlan === "starter" ? "bg-[#156d95] text-white" : "bg-secondary text-foreground",
               )}
+              style={{ minHeight: "48px" }}
             >
               Join Beta
             </button>
@@ -108,7 +109,7 @@ export function PricingSection() {
         </div>
 
         {/* Features Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {features.map((feature, index) => (
             <div
               key={feature.name}
@@ -119,8 +120,8 @@ export function PricingSection() {
                   <CheckIcon className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-figtree text-lg font-medium mb-2">{feature.name}</h4>
-                  <p className="font-figtree text-sm text-muted-foreground">
+                  <h4 className="font-figtree text-base sm:text-lg font-medium mb-2">{feature.name}</h4>
+                  <p className="font-figtree text-sm leading-5 text-muted-foreground">
                     Included in all beta plans with full access and priority support.
                   </p>
                 </div>
@@ -130,15 +131,15 @@ export function PricingSection() {
         </div>
 
         {/* Competitive Comparison */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="font-figtree text-[32px] font-normal leading-tight mb-4">Why Choose Nivix Over Traditional Options</h3>
-            <p className="font-figtree text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            <h3 className="font-figtree text-xl sm:text-2xl md:text-[32px] font-normal leading-tight mb-3 sm:mb-4">Why Choose Nivix Over Traditional Options</h3>
+            <p className="font-figtree text-base sm:text-lg leading-6 sm:leading-7 text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
               Compare our revolutionary cross-border payment solution with existing market players.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             {[
               { name: "Nivix", time: "< 3 seconds", fees: "0.5-1.3%", highlight: true },
               { name: "Wise", time: "1-2 days", fees: "2-3%", highlight: false },
@@ -155,7 +156,7 @@ export function PricingSection() {
                     : "border-border bg-card hover:border-[#156d95]/50"
                 )}
               >
-                <h4 className="font-figtree text-lg font-medium mb-4">{provider.name}</h4>
+                <h4 className="font-figtree text-base sm:text-lg font-medium mb-3 sm:mb-4">{provider.name}</h4>
                 <div className="space-y-3">
                   <div>
                     <p className="font-figtree text-sm text-muted-foreground mb-1">Transfer Time</p>
@@ -182,10 +183,11 @@ export function PricingSection() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 sm:mt-10 md:mt-12 text-center">
           <button
             onClick={() => setIsWaitlistDialogOpen(true)}
-            className="bg-[#156d95] text-white px-[18px] py-[15px] rounded-full font-figtree text-lg hover:rounded-2xl transition-all"
+            className="bg-[#156d95] text-white px-5 sm:px-[18px] py-3 sm:py-[15px] rounded-full font-figtree text-base sm:text-lg hover:rounded-2xl transition-all active:scale-98"
+            style={{ minHeight: "48px" }}
           >
             Join India-UK Beta Program
           </button>

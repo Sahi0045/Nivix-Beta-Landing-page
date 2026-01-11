@@ -90,16 +90,16 @@ export const RoadmapSection = () => {
   return (
     <div className="w-full bg-white">
       {/* Hero Section */}
-      <section className="w-full px-8 pt-32 pb-16">
+      <section className="w-full px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 md:pt-32 pb-10 sm:pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-12 md:mb-16"
           >
             <h1
-              className="text-[56px] leading-[60px] tracking-tight text-[#202020] mb-4"
+              className="text-3xl sm:text-4xl md:text-[56px] leading-tight sm:leading-[1.1] md:leading-[60px] tracking-tight text-[#202020] mb-3 sm:mb-4"
               style={{
                 fontWeight: "500",
                 fontFamily: "var(--font-figtree), Figtree",
@@ -108,7 +108,7 @@ export const RoadmapSection = () => {
               Nivixpe Development Timeline
             </h1>
             <p
-              className="text-xl leading-7 text-[#666666]"
+              className="text-base sm:text-lg md:text-xl leading-6 sm:leading-7 text-[#666666]"
               style={{
                 fontFamily: "var(--font-figtree), Figtree",
               }}
@@ -120,7 +120,7 @@ export const RoadmapSection = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="w-full px-8 py-16 bg-[#f9f9f9]">
+      <section className="w-full px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-16 bg-[#f9f9f9]">
         <div className="max-w-7xl mx-auto">
           <div className="relative">
             {/* Timeline Line - Desktop */}
@@ -134,7 +134,7 @@ export const RoadmapSection = () => {
             />
 
             {/* Timeline Stages */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 relative z-10">
               {timelineStages.map((stage, index) => (
                 <motion.div
                   key={index}
@@ -147,20 +147,19 @@ export const RoadmapSection = () => {
                   <div className="flex flex-col items-center text-center">
                     {/* Icon Circle */}
                     <div
-                      className={`w-24 h-24 rounded-full flex items-center justify-center mb-4 relative z-10 ${
-                        stage.status === "completed"
+                      className={`w-24 h-24 rounded-full flex items-center justify-center mb-4 relative z-10 ${stage.status === "completed"
                           ? "bg-green-500 text-white"
                           : stage.status === "current"
-                          ? "bg-[#156d95] text-white shadow-lg"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
+                            ? "bg-[#156d95] text-white shadow-lg"
+                            : "bg-gray-200 text-gray-500"
+                        }`}
                     >
                       {stage.icon}
                     </div>
 
                     {/* Stage Info */}
                     <h3
-                      className="text-lg font-medium text-[#202020] mb-2"
+                      className="text-base sm:text-lg font-medium text-[#202020] mb-2"
                       style={{
                         fontFamily: "var(--font-figtree), Figtree",
                         fontWeight: "500",
@@ -195,19 +194,19 @@ export const RoadmapSection = () => {
       </section>
 
       {/* Progress Overview Section */}
-      <section className="w-full px-8 py-24 bg-white">
+      <section className="w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="bg-[#1a1a1a] rounded-3xl p-8 lg:p-12 text-white"
+            className="bg-[#1a1a1a] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 text-white"
           >
             {/* Header */}
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-0">
               <h2
-                className="text-3xl font-medium text-white"
+                className="text-xl sm:text-2xl md:text-3xl font-medium text-white"
                 style={{
                   fontFamily: "var(--font-figtree), Figtree",
                   fontWeight: "500",
@@ -252,7 +251,7 @@ export const RoadmapSection = () => {
             </div>
 
             {/* Status Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10 md:mb-12">
               {statusCards.map((card, index) => (
                 <motion.div
                   key={index}

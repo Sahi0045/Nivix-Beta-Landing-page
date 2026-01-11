@@ -84,7 +84,7 @@ const advisor: TeamMember = {
 
 export const TeamSection = () => {
   return (
-    <section className="w-full py-24 px-8 bg-white">
+    <section className="w-full py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -92,10 +92,10 @@ export const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
           <h2
-            className="text-[40px] leading-tight font-normal text-[#202020] tracking-tight mb-4"
+            className="text-2xl sm:text-3xl md:text-[40px] leading-tight font-normal text-[#202020] tracking-tight mb-3 sm:mb-4"
             style={{
               fontFamily: "var(--font-figtree), Figtree",
               fontWeight: "400",
@@ -104,7 +104,7 @@ export const TeamSection = () => {
             Leadership & Core Team
           </h2>
           <p
-            className="text-lg leading-6 text-[#666666] max-w-2xl mx-auto"
+            className="text-base sm:text-lg leading-5 sm:leading-6 text-[#666666] max-w-2xl mx-auto"
             style={{
               fontFamily: "var(--font-figtree), Figtree",
             }}
@@ -114,7 +114,7 @@ export const TeamSection = () => {
         </motion.div>
 
         {/* Team Members Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12 md:mb-16">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -125,7 +125,7 @@ export const TeamSection = () => {
               className="bg-[#f9f9f9] rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <h3
-                className="text-2xl font-medium text-[#202020] mb-1"
+                className="text-xl sm:text-2xl font-medium text-[#202020] mb-1"
                 style={{
                   fontFamily: "var(--font-figtree), Figtree",
                   fontWeight: "500",
@@ -134,7 +134,7 @@ export const TeamSection = () => {
                 {member.name}
               </h3>
               <p
-                className="text-base text-[#156d95] mb-4"
+                className="text-sm sm:text-base text-[#156d95] mb-4"
                 style={{
                   fontFamily: "var(--font-figtree), Figtree",
                   fontWeight: "500",
@@ -204,7 +204,7 @@ export const TeamSection = () => {
           className="bg-gradient-to-r from-[#156d95]/5 to-[#52aee3]/5 rounded-2xl p-8 border border-[#156d95]/20"
         >
           <h3
-            className="text-2xl font-medium text-[#202020] mb-1"
+            className="text-xl sm:text-2xl font-medium text-[#202020] mb-1"
             style={{
               fontFamily: "var(--font-figtree), Figtree",
               fontWeight: "500",
@@ -213,7 +213,7 @@ export const TeamSection = () => {
             {advisor.name}
           </h3>
           <p
-            className="text-base text-[#156d95] mb-4"
+            className="text-sm sm:text-base text-[#156d95] mb-4"
             style={{
               fontFamily: "var(--font-figtree), Figtree",
               fontWeight: "500",

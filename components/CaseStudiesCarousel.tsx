@@ -51,7 +51,7 @@ const caseStudies: CaseStudy[] = [
     logo: (
       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
         </svg>
       </div>
     ),
@@ -531,14 +531,14 @@ export const CaseStudiesCarousel = () => {
   }
   return (
     <div
-      className="w-full min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center py-24 px-8"
+      className="w-full min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-8"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
       <div className="max-w-7xl w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#156d95]/10 to-[#52aee3]/10 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#156d95]/10 to-[#52aee3]/10 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#156d95] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-[#156d95]"></span>
@@ -546,7 +546,7 @@ export const CaseStudiesCarousel = () => {
             <span className="font-figtree text-sm font-medium text-[#156d95]">Real Impact</span>
           </div>
           <h1
-            className="text-[48px] leading-tight font-normal text-foreground mb-6 tracking-tight bg-gradient-to-r from-[#156d95] via-[#52aee3] to-[#9ed2fc] bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl md:text-[48px] leading-tight font-normal text-foreground mb-4 sm:mb-6 tracking-tight bg-gradient-to-r from-[#156d95] via-[#52aee3] to-[#9ed2fc] bg-clip-text text-transparent"
             style={{
               fontWeight: "400",
               fontFamily: "var(--font-figtree), Figtree",
@@ -556,7 +556,7 @@ export const CaseStudiesCarousel = () => {
             Transforming Global Payments
           </h1>
           <p
-            className="text-xl leading-7 text-muted-foreground max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl leading-6 sm:leading-7 text-muted-foreground max-w-3xl mx-auto px-2 sm:px-0"
             style={{
               fontFamily: "var(--font-figtree), Figtree",
             }}
@@ -565,7 +565,7 @@ export const CaseStudiesCarousel = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <AnimatePresence mode="wait" custom={direction}>
@@ -591,7 +591,7 @@ export const CaseStudiesCarousel = () => {
                 <div className="text-foreground/60">{currentStudy.logo}</div>
 
                 <h2
-                  className="text-4xl font-bold text-foreground leading-tight tracking-tight"
+                  className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground leading-tight tracking-tight"
                   style={{
                     fontFamily: "var(--font-figtree), Figtree",
                     fontWeight: "400",
@@ -677,7 +677,7 @@ export const CaseStudiesCarousel = () => {
           </div>
 
           {/* Right Content - Card Visualization */}
-          <div className="relative h-[500px] flex items-center justify-center">
+          <div className="relative h-[300px] sm:h-[400px] md:h-[500px] hidden lg:flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStudy.id}
