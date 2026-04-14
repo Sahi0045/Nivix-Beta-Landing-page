@@ -91,9 +91,11 @@ export const metadata: Metadata = {
     creator: "@nivixpe",
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   verification: {
     google: "", // Add your GSC verification token here
