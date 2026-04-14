@@ -1,0 +1,26 @@
+# NivixPe robots.txt
+# https://nivixpe.com
+
+User-agent: *
+Allow: /
+
+# Block API and internal routes from indexing
+Disallow: /api/
+Disallow: /_next/
+Disallow: /api-docs/
+
+# Allow all major search engine bots explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://nivixpe.com/sitemap.xml

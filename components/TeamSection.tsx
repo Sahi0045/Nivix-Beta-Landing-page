@@ -51,7 +51,7 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
-    name: "Harika",
+    name: "Bhavika",
     role: "Marketing Lead",
     focusAreas: ["Marketing Execution", "Campus Activation"],
     responsibilities: [

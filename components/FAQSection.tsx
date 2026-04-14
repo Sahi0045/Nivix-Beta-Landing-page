@@ -13,19 +13,39 @@ type FAQSectionProps = {
 }
 const defaultFAQs: FAQItem[] = [
   {
-    question: "What is Nivixpe and how does it work?",
+    question: "What is NivixPe and how does it work?",
     answer:
-      "Nivixpe is a blockchain-powered payment layer that connects all your financial tools—payments, trades, and settlements—into a unified system. It processes transactions in real-time to provide insights on fraud detection, compliance, transaction patterns, and cross-border flows. Simply integrate Nivixpe with your existing tools like banking APIs, payment processors, or trading platforms, and start gaining actionable insights immediately.",
+      "NivixPe is a blockchain-powered cross-border payment platform that enables instant fiat-to-fiat international transfers from India in under 3 seconds — with significantly lower fees than SWIFT. It connects Indian banks and foreign bank accounts through a blockchain settlement layer, eliminating costly correspondent banking. Simply join our beta waitlist to get early access to the India-UK corridor.",
   },
   {
-    question: "How does Nivixpe use my data to ensure secure transactions?",
+    question: "How does NivixPe compare to SWIFT for international money transfers from India?",
     answer:
-      "Nivixpe processes your transaction data using advanced blockchain technology and machine learning models. All data is encrypted end-to-end and processed in compliance with enterprise-grade security standards. Your data is never shared with third parties, and you maintain complete control over what gets analyzed. The system learns from patterns in your financial transactions to provide personalized insights specific to your organization.",
+      "Traditional SWIFT transfers from India take 2–5 business days and cost ₹500–₹2,000 in fees plus hidden FX markups from correspondent banks. NivixPe settles the same transaction in under 3 seconds with near-zero fees, using blockchain rails instead of SWIFT's legacy correspondent banking network. This makes it a faster, cheaper SWIFT alternative for India.",
   },
   {
-    question: "How do I get started with Nivixpe and what are the pricing options?",
+    question: "Who is NivixPe designed for?",
     answer:
-      "Getting started is simple: sign up for a free trial, connect your payment tools, and start processing within minutes. We offer flexible pricing tiers: Starter ($29/month for small teams), Professional ($99/month), and Enterprise (custom pricing with dedicated support). All plans include core features like real-time transaction monitoring and fraud detection. Contact our sales team for volume discounts and custom enterprise solutions.",
+      "NivixPe is built for three main user groups: (1) Indian students studying abroad who need to send or receive education funds internationally, (2) MSMEs (Micro, Small & Medium Enterprises) making cross-border trade payments, and (3) Indian businesses with global supplier or customer payment needs. The India-UK payment corridor is our first beta route.",
+  },
+  {
+    question: "Is NivixPe compliant with RBI, FEMA, and Indian regulations?",
+    answer:
+      "Yes. NivixPe Private Limited is a DPIIT-recognized startup incubated at Bennett Hatchery. Independent Chartered Accountant and external legal counsel have confirmed compliance for the testing phase with all applicable Indian laws — including PMLA, FEMA, RBI guidelines, Income Tax, DPDPA, GST, and Companies Act. The current beta uses test tokens only; no real customer funds are at risk.",
+  },
+  {
+    question: "What are the fees for sending money abroad from India with NivixPe?",
+    answer:
+      "NivixPe is designed to dramatically reduce cross-border payment costs compared to SWIFT and traditional banks. The current beta uses test tokens with zero fees. Detailed pricing for the live product will be announced at official launch. Our goal is to save users thousands of rupees per transaction compared to traditional wire transfer costs.",
+  },
+  {
+    question: "Which countries does NivixPe support for international transfers?",
+    answer:
+      "NivixPe's India-UK payment corridor is the first beta route, with plans to expand to 150+ countries. Priority corridors after India-UK include India-USA, India-UAE, India-Australia, and India-Singapore — covering the most common destinations for Indian students and MSME trade flows.",
+  },
+  {
+    question: "How do I join the NivixPe India-UK beta?",
+    answer:
+      "Click the 'Join Waitlist' or 'Join India-UK Beta' button on our homepage to request early access. Our beta is currently invite-only and uses test tokens, so there's no risk to your funds. We'll notify you by email when a beta slot is available. Early waitlist members get priority access and the best early-bird pricing.",
   },
 ]
 export const FAQSection = ({ title = "Frequently asked questions", faqs = defaultFAQs }: FAQSectionProps) => {
